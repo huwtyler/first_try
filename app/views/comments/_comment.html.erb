@@ -1,18 +1,18 @@
-<% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-
-  <p>
-    <%= link_to "Destroy Comment", [comment.article, comment], data: {
+  <ul class="">
+      <li class="mb-4 pb-4 border-b-2 border-slate-300">
+         <header class="font-bold text-xs text-slate-500 mb-2">
+          <%
+=begin%>
+ @<%= comment.user.slug %> 
+<%
+=end%>
+        </header>
+         <p class="mb-3"><%= comment.body %></p>
+         <hr class="mb-3">
+           <p><%= link_to "<i class=\"fa-solid fa-trash text-slate-300\"></i>".html_safe, [comment.article, comment], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
-                } %>
-  </p>
-<% end %>
+                } %></p>
+      </li>
+</ul>
+

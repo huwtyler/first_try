@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
+    # resources :interactions
   end
+
+  resources :users
 end

@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.all()
+    @articles = Article.all().order('created_at DESC')
   end
 
   def show
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :body, :status, :user_id)
+    params.require(:article).permit(:body, :user_id)
   end
 end

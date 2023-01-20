@@ -1,19 +1,12 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
+  <div>
+   <%= form.label 'Reply:', class: "font-bold text-slate-500" %><br>
+    <%= form.text_area :body, class: "w-full rounded-md border-2 border-slate-300" %>
+  </div>
 
-  <p>
-  <%= form.label :status %><br>
-  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-</p>
+<%= form.hidden_field :user_id, value: current_user.id %>
 
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="mb-8">
+    <%= form.submit "Tweet it!", class: "bg-blue-500 px-3 py-2 text-white rounded-full hover:bg-blue-700" %>
+  </div>
 <% end %>

@@ -1,16 +1,12 @@
-<h1 class="text-3xl font-bold underline mb-4">Articles</h1>
-
-Our blog has <%= Article.public_count %> articles and counting!
-
-<ul class="mb-4">
+<ul class="">
   <% @articles.each do |article| %>
-    <% unless article.archived? %>
-      <li class="text-xl mb-4">
-        <%= link_to article.title, article, class: "underline" %> <br>
-        <span class="text-sm">posted <%= time_ago_in_words(article.created_at) %> ago by @<%= article.user.slug %></span>
+      <li class="mb-4 pb-4 border-b-2 px-4 border-slate-300">
+         <header class="font-bold text-xs text-slate-500 mb-2">
+          @<%= article.user.slug %>
+          </header>
+         <p class="mb-3"><%= link_to article.body, article %></p>
+         <hr class="mb-3">
+         <%= render 'interactions', article: article %>
       </li>
-    <% end %>
   <% end %>
 </ul>
-
-<%= link_to "New Article", new_article_path, class: "bg-blue-500 px-3 py-2 text-white rounded-full hover:bg-blue-700" %>
