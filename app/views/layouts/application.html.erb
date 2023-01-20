@@ -5,12 +5,28 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <script src="https://kit.fontawesome.com/5f669c3761.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-yellow-100">
+  <header class="container mx-auto py-4 flex justify-between">
+    <h1><%= link_to "First Try", root_path %></h1>
+    <ul>
+      <li><i class="fa-solid fa-user"></i> @<%= current_user.slug %></li>
+    </ul>
+  </header>
+  <section class="bg-green-500">
+    <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+  </section>
+    <main class="container mx-auto mt-28">
+        
+      <%= yield %>
+    </main>
   </body>
 </html>
