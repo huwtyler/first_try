@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :articles, dependent: :destroy
+
+  has_many :followers, class_name: 'Follow', foreign_key: 'follower_id'
+  has_many :followees, class_name: 'Follow', foreign_key: 'followee_id'
 end
