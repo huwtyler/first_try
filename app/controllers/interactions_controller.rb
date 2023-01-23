@@ -4,12 +4,12 @@ class InteractionsController < ApplicationController
 
     def create
         @article = Article.find(params[:article_id])
-        @interaction = @article.interaction.create(interaction_params)
-        redirect_to root_path
-    end
+       @interaction = @article.interactions.create(interaction_type: "retweet", user_id: current_user.id)
 
-    private
-    def interaction_params
-        params.require(:interaction).permit(:user_id, :interaction_type, :article_id)
+        if @interaction.save()
+            flash[:notice] = "Retweeted"
+            redirect_back(fallback_location: root_path)
+        end
+
     end
 end

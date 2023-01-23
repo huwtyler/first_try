@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_22_203307) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_23_133720) do
   create_table "articles", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_203307) do
   create_table "interactions", force: :cascade do |t|
     t.integer "article_id", null: false
     t.integer "user_id", null: false
-    t.string "type"
+    t.string "interaction_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_interactions_on_article_id"

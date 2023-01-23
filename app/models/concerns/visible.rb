@@ -6,9 +6,7 @@ module Visible
         all().count
       end
 
-      def like_count
-        where(interaction_type: 'like').count
-      end
+     
     end
 
   end
