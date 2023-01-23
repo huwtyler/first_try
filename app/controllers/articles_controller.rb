@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.where(user_id: Follow.select(:followee_id).where(follower_id: current_user)).or(Article.where(user_id: current_user))
+    @articles = Article.where(user_id: Follow.select(:followee_id).where(follower_id: current_user)).or(Article.where(user_id: current_user)).order(created_at: :desc)
     # SELECT * FROM articles WHERE user_id IN (SELECT followee_id FROM follows WHERE follower_id = {current_user}) OR user_id = {current_user}
   end
 

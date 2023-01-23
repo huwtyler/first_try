@@ -17,7 +17,7 @@
   <header class="container bg-blue-500 mx-auto py-4 px-4 flex justify-between items-center text-white">
     <h1 class="text-lg"><i class="fa-brands fa-twitter mr-2"></i><%= link_to "Bitter", root_path %></h1>
     <ul class="flex gap-4 items-center">
-      <li class="text-xs font-bold"><i class="fa-solid fa-user"></i> @<%= current_user.slug %></li>
+      <li class="text-xs font-bold"><i class="fa-solid fa-user"></i> <%= link_to "@" + current_user.slug, user_path(current_user) %></li>
       <li class=""><%= link_to '<i class="fa-solid text-blue-500 fa-feather"></i>'.html_safe, new_article_path, class: "rounded-full bg-white p-2 hover:bg-blue-800" %></li>
     </ul>
   </header>
@@ -25,7 +25,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </section>
-    <main class="container mx-auto mt-4">
+    <main class="container mx-auto">
       <%= yield %>
     </main>
   </body>

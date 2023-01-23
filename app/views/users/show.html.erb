@@ -1,25 +1,24 @@
-<h1><%= User.find(params[:id]).slug %></h1>
-<ul class="mb-4">
-    <li>Followers: <%= @user.followers.count() %></li>
-    <li>Following: <%= @user.followees.count() %></li>
-    <li>Tweets: <%= @user.articles.count() %></li>
-    <li>Member since: <%= @user.created_at %></li>
-</ul>
+<header class="bg-slate-200 py-6 px-4 mb-6 border-b-2 border-b-slate-200">
+  <h1 class="text-xl font-bold text-slate-600"><%= User.find(params[:id]).slug %></h1>
 
+  <ul class="mb-4 flex text-xs gap-4 text-slate-400 font-bold">
+      <li>Followers: <%= @user.followers.count() %></li>
+      <li>Following: <%= @user.followees.count() %></li>
+      <li>Tweets: <%= @user.articles.count() %></li>
+  </ul>
+
+  <section class="text-xs">Member since: <%= @user.created_at.strftime("%d %B %Y") %></section>
+</header>
 
 <ul class="">
   <% @articles.each do |article| %>
       <li class="mb-4 pb-4 border-b-2 px-4 border-slate-300">
          <header class="font-bold text-xs text-slate-500 mb-2">
-          @<%= article.user.slug %>
+          <%= link_to "@" + article.user.slug, user_path(article.user) %>
           </header>
          <p class="mb-3"><%= link_to article.body, article %></p>
          <hr class="mb-3">
-         <%
-=begin%>
- <%= render 'interactions', article: article %> 
-<%
-=end%>
+          <%= render '/articles/interactions', article: article %> 
       </li>
   <% end %>
 </ul>
