@@ -12,7 +12,7 @@ class Article < ApplicationRecord
     end
   
     def like_count
-      where(interaction_type: 'like').count
+      self.interactions.where(interaction_type: 'like').count
     end
   end
   
