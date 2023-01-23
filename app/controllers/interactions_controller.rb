@@ -10,6 +10,6 @@ class InteractionsController < ApplicationController
 
     private
     def interaction_params
-        params.require(:interaction).permit(:user_id, :interaction_type)
+        params.require(:interaction).permit(:user_id, :interaction_type, :article_id)
     end
 end

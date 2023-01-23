@@ -1,18 +1,9 @@
 <ul class="flex gap-4 items-center">
-    <li class="cursor-pointer text-red-500 hover:text-red-800">
-    <%
-=begin%>
- <%= link_to [interaction.article, interaction], method: "post" do %> 
-<%
-=end%>
-        <i class="fa-regular fa-heart"></i> 0</li>
-    <%
-=begin%>
- <% end %> 
-<%
-=end%>
-    </li>
+    <li class="cursor-pointer text-red-500 hover:text-red-800"><i class="fa-regular fa-heart"></i> 0</li>
     <li class="cursor-pointer text-blue-500 hover:text-blue-800"><i class="fa-solid fa-retweet"></i> 0
+
+    <%= button_to "retweet", '/article/retweet', method: :post, params: { id: article.id }, class: "" %>
+
     <li class="cursor-pointer text-orange-500 hover:text-orange-800">
         <%= link_to article do %>
             <i class="fa-regular fa-comment"></i>

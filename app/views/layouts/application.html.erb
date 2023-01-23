@@ -21,10 +21,12 @@
       <li class=""><%= link_to '<i class="fa-solid text-blue-500 fa-feather"></i>'.html_safe, new_article_path, class: "rounded-full bg-white p-2 hover:bg-blue-800" %></li>
     </ul>
   </header>
-  <section class="bg-green-500">
+  <% if notice %>
+  <section class="bg-green-500 p-3 text-white font-bold text-sm">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </section>
+  <% end %>
     <main class="container mx-auto">
       <%= yield %>
     </main>
