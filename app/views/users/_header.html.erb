@@ -1,0 +1,18 @@
+<header class="bg-slate-200 py-6 px-4 mb-6 border-b-2 border-b-slate-200">
+  <%= link_to( @user.slug, @user, class:"text-xl font-bold text-slate-600") %>
+  
+
+  <ul class="mb-4 flex text-xs gap-4 text-slate-400 font-bold">
+      <!-- There must be a way to call this link via the class? -->
+      <li><%= link_to 'Followers: ' + @user.followers.count().to_s, '/users/'+@user.id.to_s+'/followers' %></li>
+      <li>Following: <%= @user.followees.count() %></li>
+      <li>Tweets: <%= @user.articles.count() %></li>
+  </ul>
+  <% if @user.following?(current_user, @user) %>
+    <%= button_to "Unfollow", '/users/unfollow', method: :post, params: { id: @user.id }, class: "bg-red-500 text-white font-bold mb-4 px-2 py-1 rounded-md" %>
+  <% else %>
+    <%= button_to "Follow", '/users/follow', method: :post, params: { id: @user.id }, class: "bg-blue-500 text-white font-bold mb-4 px-2 py-1 rounded-md" %>
+  <% end %>
+
+  <section class="text-xs">Member since: <%= @user.created_at.strftime("%d %B %Y") %></section>
+</header>

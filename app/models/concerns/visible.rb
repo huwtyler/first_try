@@ -5,9 +5,6 @@ module Visible
       def public_count
         all().count
       end
-
-     
     end
-
   end
   

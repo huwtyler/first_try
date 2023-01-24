@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "articles#index"
+  root 'articles#index'
 
   resources :articles do
     resources :comments
@@ -10,9 +10,11 @@ Rails.application.routes.draw do
     resources :followers
   end
 
-  post 'users/follow', to: 'users#follow'
-  post 'users/unfollow', to: 'users#unfollow'
+  post 'users/follow'
+  post 'users/unfollow'
 
+  # should this be within the articles resource as is :comments
+  # I'm not sure why article/interaction/create doesn't work on it's own without the to: '...'
   post 'article/interaction', to: 'interactions#create'
 end
 

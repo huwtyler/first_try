@@ -3,10 +3,10 @@
          <header class="font-bold text-xs text-slate-500 mb-2">
           <%
 =begin%>
- @<%= comment.user.slug %> 
+ @<%= comment.user.id %>  
 <%
 =end%>
-        </header>
+         </header>
          <p class="mb-3"><%= comment.body %></p>
          <hr class="mb-3">
            <p><%= link_to "<i class=\"fa-solid fa-trash text-slate-300\"></i>".html_safe, [comment.article, comment], data: {
