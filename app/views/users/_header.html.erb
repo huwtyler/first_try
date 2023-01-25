@@ -3,7 +3,7 @@
   
 
   <ul class="mb-4 flex text-xs gap-4 text-slate-400 font-bold">
-      <!-- There must be a way to call this link via the class? -->
+      <!-- There must be a way to call this link via the class or a followers_path helper? -->
       <li><%= link_to 'Followers: ' + @user.followers.count().to_s, '/users/'+@user.id.to_s+'/followers' %></li>
       <li>Following: <%= @user.followees.count() %></li>
       <li>Tweets: <%= @user.articles.count() %></li>

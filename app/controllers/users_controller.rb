@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     def unfollow
         f = Follow.where(:follower_id => current_user.id).and(Follow.where(:followee_id => params[:id]))
-        if f.destroy_all()
+        if f.destroy()
             flash[:notice] = "You have unfollowed @" + User.find(2).slug
             redirect_back(fallback_location: root_path)
            end
